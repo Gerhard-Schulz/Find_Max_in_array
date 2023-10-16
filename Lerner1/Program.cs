@@ -51,15 +51,15 @@
         {
             Random random = new Random();
             int index = random.Next(i + 1);
-            array[i] ^= array[index];
-            array[index] ^= array[i];
-            array[i] ^= array[index];
+            int temp = array[i];
+            array[i] = array[index];
+            array[index] = temp;
         }
     }
 
     static void PrintGrafic(int[] array)
     {
-        var plt = new ScottPlot.Plot(600, 400);
+        var plt = new ScottPlot.Plot(800, 600);
         plt.AddSignal(array, sampleRate: array.Length);
         plt.Title("График результатов эксперементов");
         plt.XLabel("Эксперемент");
